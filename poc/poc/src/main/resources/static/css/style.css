@@ -10806,5 +10806,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   margin-left: 12px;
 }
 
-
-
+/* Add Comments Button */
+#addCommentsButton {
+  font-size: 10px;
+}

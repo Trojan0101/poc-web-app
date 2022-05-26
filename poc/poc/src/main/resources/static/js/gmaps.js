@@ -21,7 +21,7 @@ function initMap() {
       // markers can only be keyboard focusable when they have click listeners
       // open info window when marker is clicked
       marker.addListener("click", () => {
-        infoWindow.setContent(label); // Add the logic to show a popup window with add-comments button
+        infoWindow.setContent('<button id="addCommentsButton" class="btn btn-primary" onclick="addComments()">Add Comments</button>'); // Add the logic to show a popup window with add-comments button
         infoWindow.open(map, marker);
       });
       return marker;
@@ -29,7 +29,7 @@ function initMap() {
   
     // Add a marker clusterer to manage the markers.    
     new markerClusterer.MarkerClusterer({ map, markers });
-  }
+}
   
 const locations = [];
 let usersLocation = String(message);
@@ -41,5 +41,9 @@ for (let i = 0; i < usersLocationArray.length; i++) {
   const location = { lat: Number(newArray[0]), lng: Number(newArray[1]) };
   locations.push(location);
 }
-  
+
+function addComments() {
+  alert("Add sample comments!");
+}
+
 window.initMap = initMap;
