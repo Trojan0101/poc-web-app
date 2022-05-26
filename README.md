@@ -31,7 +31,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 
     - Create a new database.
     - In the custom database section, enable the **Use my own database** option.
-    - Modify all the action scripts. Actions scripts are in **poc-db-action-scripts** folder.
+    - Modify all the action scripts using the scripts in **poc-db-action-scripts** folder.
     - Add encrypted value for **configuration.POSTGRES_URL**. This will contain the connection string for postgresql connection.
 
 - Universal Login in Auth0:
