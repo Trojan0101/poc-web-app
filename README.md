@@ -2,7 +2,7 @@
 
 A Java Spring-Boot based web application that incorporates authentication and authorization using Auth0 and cluster marking using google maps.
 
-## Tech Stack
+## Tech Stack:
 
 Backend: Java, Spring Boot, Hibernate
 Database: PostgreSQL
@@ -11,16 +11,20 @@ Authentication and Authorization: Auth0 Service
 Cluster Marking API: Google Javascript Maps API
 Tools: Intellij Idea, VS-Code
 
-## Pre-requisite
+## Pre-requisite:
+
+### Auth0:
 
 - Regular Web Application in Auth0:
 
+    - Create a new application with type **Regular Web Application**.
     - Copy the **domain, client id, and client secret**. Replace the values in the application.properties file and wherever necessary.
-    - Add Allowed Callback URLs: http://localhost:8080/callback
-    - Add Allowed Logout URLs: http://localhost:8080
+    - Add Allowed Callback URLs: http<span></span>://localhost:8080/callback
+    - Add Allowed Logout URLs: http<span></span>://localhost:8080
 
 - Machine to Machine Application in Auth0:
 
+    - Create a new application with type **Machine to Machine Application**.
     - Copy the **domain, client id, and client secret**. Replace the values in the application.properties file and wherever necessary.
 
 - Username-Password-Authentication Database in Auth0:
@@ -38,3 +42,7 @@ Tools: Intellij Idea, VS-Code
 - GeoLocation Rule:
 
     - Add a rule named **GeoLocation**, and paste the code from **poc-geoip-script** folder.
+
+### Database:
+
+- Modify the properties for database in the **application.properties** file.
