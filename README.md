@@ -46,6 +46,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 
 ### Database:
 
+- Start postgresql in local or in cloud, and create a database.
 - Modify the properties for database in the **application.properties** file.
 
 ### Google Maps:
