@@ -37,7 +37,7 @@ Tools: Intellij Idea, VS-Code
 
     - Change from **New** to **Classic** in settings tab.
     - In the login tab, enable the **Customize Login Page** option.
-    - Edit the HTML code using the code given in **poc-auth0-login-html** folder.
+    - Replace the HTML code using the code from the file in **poc-auth0-login-html** folder.
 
 - GeoLocation Rule:
 
