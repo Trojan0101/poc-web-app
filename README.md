@@ -8,7 +8,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 - Database: PostgreSQL
 - Frontend: HTML, CSS, Javascript
 - Authentication and Authorization: Auth0 Service
-- Cluster Marking API: Google Javascript Maps API
+- Cluster Marking API: Google Maps Javascript API
 - Tools: Intellij Idea, VS-Code
 
 ## Pre-Requisite:
