@@ -11,7 +11,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 - Cluster Marking API: Google Javascript Maps API
 - Tools: Intellij Idea, VS-Code
 
-## Pre-requisite:
+## Pre-Requisite:
 
 ### Auth0:
 
