@@ -41,7 +41,7 @@ Tools: Intellij Idea, VS-Code
 
 - GeoLocation Rule:
 
-    - Add a rule named **GeoLocation**, and paste the code from **poc-geoip-script** folder.
+    - Add a rule named **GeoLocation**, and paste the code from the file in **poc-geoip-script** folder.
 
 ### Database:
 
