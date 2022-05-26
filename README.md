@@ -4,12 +4,12 @@ A Java Spring-Boot based web application that incorporates authentication and au
 
 ## Tech Stack:
 
-Backend: Java, Spring Boot, Hibernate
-Database: PostgreSQL
-Frontend: HTML, CSS, Javascript
-Authentication and Authorization: Auth0 Service
-Cluster Marking API: Google Javascript Maps API
-Tools: Intellij Idea, VS-Code
+- Backend: Java, Spring Boot, Hibernate
+- Database: PostgreSQL
+- Frontend: HTML, CSS, Javascript
+- Authentication and Authorization: Auth0 Service
+- Cluster Marking API: Google Javascript Maps API
+- Tools: Intellij Idea, VS-Code
 
 ## Pre-requisite:
 
