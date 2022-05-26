@@ -46,3 +46,9 @@ Tools: Intellij Idea, VS-Code
 ### Database:
 
 - Modify the properties for database in the **application.properties** file.
+
+### Google Maps:
+
+- Create an **API Credential** in Google Cloud Platform.
+- Copy the API key and replace it in the **dashboard.html** file.
+- Enable the **Maps Javascript API**.
