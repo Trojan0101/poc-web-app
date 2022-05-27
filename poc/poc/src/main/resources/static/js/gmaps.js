@@ -25,7 +25,13 @@ function initMap(callback) {
         // open info window when marker is clicked
         marker.addListener("click", () => {
             // Add the logic to show a popup window with add-comments button
-            infoWindow.setContent('<button id="addCommentsButton" class="btn btn-primary" onclick="addComments()">Add Comments</button>');
+            infoWindow.setContent(
+                '<form action="/addComments" method="post">' +
+                '<textarea id="commentTextBox" name="comment"></textarea><br>' +
+                '<input type="file" id="commentImage" name="commentImage"><br>' +
+                '<button type = "submit" id="addCommentButton" class="btn btn-primary">Add Comment</button>' +
+                '</form>'
+            );
             infoWindow.open(map, marker);
         });
         return marker;

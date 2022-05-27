@@ -10796,7 +10796,22 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   margin-left: 12px;
 }
 
+/* Comment Text Box */
+#commentTextBox
+{
+  height:80px;
+  width:250px;
+  font-size:10pt;
+}
+
+/* Upload Image Button */
+#commentImage
+{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* Add Comments Button */
-#addCommentsButton {
-  font-size: 10px;
+#addCommentButton {
+  font-size: 12px;
 }
