@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,13 +46,6 @@ public class HomeController {
         model.addAttribute("usersLocation", usersLocation);
         return "dashboard";
 
-    }
-
-    @PostMapping("/addComments")
-    public String addComments(@RequestBody Object comment) {
-        System.out.println("here here");
-        System.out.println(comment);
-        return "Comment Successfully Added!";
     }
 
 }
