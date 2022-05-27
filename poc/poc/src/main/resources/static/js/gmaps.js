@@ -23,14 +23,27 @@ function initMap(callback) {
 
         // markers can only be keyboard focusable when they have click listeners
         // open info window when marker is clicked
-        marker.addListener("click", () => {
+        marker.addListener("click", (mapsMouseEvent) => {
+
+            var clickedMarkerPosition =
+                JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
+
             // Add the logic to show a popup window with add-comments button
-            infoWindow.setContent(
+            var formContent =
                 '<form method="POST" enctype="multipart/form-data" action="/addComments">' +
-                // '<textarea id="commentTextBox" name="comment"></textarea><br>' +
+                '<input type="hidden" id="latlng" name="latlng">' +
+                '<textarea id="commentTextBox" name="comment"></textarea><br>' +
                 '<input type="file" id="commentImage" name="file"><br>' +
                 '<button type = "submit" id="addCommentButton" class="btn btn-primary" value="Upload">Add Comment</button>' +
-                '</form>'
+                '</form>';
+
+            var infoWindowNode = document.createElement('div');
+            var formNode = document.createElement('div');
+            formNode.innerHTML = formContent;
+            infoWindowNode.appendChild(formNode);
+
+            infoWindow.setContent(
+                infoWindowNode
             );
             infoWindow.open(map, marker);
         });

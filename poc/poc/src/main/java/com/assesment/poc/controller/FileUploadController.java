@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Controller
 public class FileUploadController {
 
@@ -21,7 +23,10 @@ public class FileUploadController {
     }
 
     @PostMapping("/addComments")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam String comment) throws IOException {
+
+        System.out.println("file: " + file);
+        System.out.println("comment: " + comment);
 
         storageService.store(file);
 

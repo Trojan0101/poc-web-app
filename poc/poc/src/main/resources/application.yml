@@ -19,5 +19,13 @@ com:
         domain: dev-a0pcsh6v.us.auth0.com
         clientSecret: WqZ8EqDUsjn4tsy-cGN8dLiD77iH789Jl1rUgGfGPestU2tdTq77Cl5NKuad7sQn
         clientId: iHpBu1ewVA0Il8MraAwkwGzwS2IY7pvT
+
+---
+spring:
+    servlet:
+        multipart:
+            max-file-size: 101MB
+            max-request-size: 101MB
+
 server:
     port: '8080'
