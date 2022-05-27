@@ -105,7 +105,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     }
 
     public String getLogoutUrl() {
-        return "https://" + getDomain() +"/v2/logout";
+        return "https://" + getDomain() + "/v2/logout";
     }
 
     public String getContextPath(HttpServletRequest request) {

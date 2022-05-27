@@ -52,7 +52,7 @@ public class AuthController {
 
     }
 
-    @GetMapping(value="/callback")
+    @GetMapping(value = "/callback")
     public void callback(HttpServletRequest request, HttpServletResponse response) throws IdentityVerificationException, IOException {
 
         Tokens tokens = authenticationController.handle(request, response);

@@ -33,7 +33,7 @@ public class LogoutController implements LogoutSuccessHandler {
         }
 
         String returnTo = config.getContextPath(req);
-        String logoutUrl = config.getLogoutUrl() + "?client_id=" + config.getClientId() + "&returnTo=" +returnTo;
+        String logoutUrl = config.getLogoutUrl() + "?client_id=" + config.getClientId() + "&returnTo=" + returnTo;
 
         try {
             TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
@@ -46,7 +46,7 @@ public class LogoutController implements LogoutSuccessHandler {
                 loginDetailsRepository.save(userLoginDetails);
             }
             res.sendRedirect(logoutUrl);
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

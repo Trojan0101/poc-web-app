@@ -45,7 +45,7 @@ public class UserController {
     @Autowired
     private LoginDetailsRepository loginDetailsRepository;
 
-    @GetMapping(value="/users")
+    @GetMapping(value = "/users")
     @ResponseBody
     public String users(HttpServletRequest request, HttpServletResponse response) {
 
@@ -65,7 +65,7 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<String> userByEmail(HttpServletResponse response, @RequestParam String email) {
 
-        ResponseEntity<String> result = apiService.getCall(config.getUsersByEmailUrl()+email);
+        ResponseEntity<String> result = apiService.getCall(config.getUsersByEmailUrl() + email);
         return result;
 
     }
@@ -79,8 +79,7 @@ public class UserController {
         List<String> firstnameList = new ArrayList<>();
         List<String> emailList = new ArrayList<>();
 
-        for(int i = 0; i < userDetailsArray.length(); i++)
-        {
+        for (int i = 0; i < userDetailsArray.length(); i++) {
             JSONObject userData = userDetailsArray.getJSONObject(i);
             String email = userData.getString("email");
 
@@ -93,7 +92,7 @@ public class UserController {
             List<Double> userLatLng = new ArrayList<>();
             userLatLng.add(userGeoIp.getDouble("latitude"));
             userLatLng.add(userGeoIp.getDouble("longitude"));
-            
+
             latLngList.add(userLatLng);
             firstnameList.add(userFirstName);
             emailList.add(email);
@@ -102,20 +101,20 @@ public class UserController {
 
     }
 
-    public List<?> getActiveUsers () {
+    public List<?> getActiveUsers() {
 
         List<LoginDetails> allUsers = loginDetailsRepository.findAll();
         List<String> emailList = new ArrayList<>();
 
         if (!allUsers.isEmpty()) {
-            for (LoginDetails user: allUsers) {
+            for (LoginDetails user : allUsers) {
                 if (user.isLoggedIn()) {
                     emailList.add(user.getEmail());
                 }
             }
         }
-
         return emailList;
+
     }
 
 }

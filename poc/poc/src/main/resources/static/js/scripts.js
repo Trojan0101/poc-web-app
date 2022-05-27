@@ -1,16 +1,16 @@
 //Toggle Button
 window.addEventListener('DOMContentLoaded', event => {
 
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
-    }
+  // Toggle the side navigation
+  const sidebarToggle = document.body.querySelector('#sidebarToggle');
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', event => {
+      event.preventDefault();
+      document.body.classList.toggle('sb-sidenav-toggled');
+      localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    });
+  }
 
 });
 
@@ -50,7 +50,7 @@ function sortUserNames() {
         }
       } else if (dir == "desc") {
         if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
-          shouldSwitch= true;
+          shouldSwitch = true;
           break;
         }
       }
@@ -58,7 +58,7 @@ function sortUserNames() {
     if (shouldSwitch) {
       b[i].parentNode.insertBefore(b[i + 1], b[i]);
       switching = true;
-      switchcount ++;
+      switchcount++;
     } else {
       if (switchcount == 0 && dir == "asc") {
         dir = "desc";

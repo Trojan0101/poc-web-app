@@ -35,7 +35,7 @@ public class HomeController {
 
         List<String> activeUsersFirstName = new ArrayList<>();
 
-        for (String email: activeUsersEmail) {
+        for (String email : activeUsersEmail) {
             int activeUserEmailIdx = usersEmail.indexOf(email);
             activeUsersFirstName.add(usersFirstName.get(activeUserEmailIdx));
             usersFirstName.remove(activeUserEmailIdx);

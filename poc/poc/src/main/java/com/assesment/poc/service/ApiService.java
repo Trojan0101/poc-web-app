@@ -30,7 +30,7 @@ public class ApiService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer "+ controller.getManagementApiToken());
+        headers.set("Authorization", "Bearer " + controller.getManagementApiToken());
 
         HttpEntity<String> request = new HttpEntity<String>(requestBody, headers);
         RestTemplate restTemplate = new RestTemplate();
