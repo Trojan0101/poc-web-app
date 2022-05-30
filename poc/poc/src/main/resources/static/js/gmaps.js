@@ -25,11 +25,11 @@ function initMap(callback) {
         // open info window when marker is clicked
         marker.addListener("click", (mapsMouseEvent) => {
 
-            var clickedMarkerPosition =
+            const clickedMarkerPosition =
                 JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
 
             // Add the logic to show a popup window with add-comments button
-            var formContent =
+            const formContent =
                 '<form method="POST" enctype="multipart/form-data" action="/addComments">' +
                 '<input type="hidden" id="latlng" name="latlng">' +
                 '<textarea id="commentTextBox" name="comment"></textarea><br>' +
@@ -37,8 +37,8 @@ function initMap(callback) {
                 '<button type = "submit" id="addCommentButton" class="btn btn-primary" value="Upload">Add Comment</button>' +
                 '</form>';
 
-            var infoWindowNode = document.createElement('div');
-            var formNode = document.createElement('div');
+            const infoWindowNode = document.createElement('div');
+            const formNode = document.createElement('div');
             formNode.innerHTML = formContent;
             infoWindowNode.appendChild(formNode);
 
