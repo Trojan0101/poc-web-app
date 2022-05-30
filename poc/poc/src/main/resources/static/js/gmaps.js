@@ -31,7 +31,7 @@ function initMap(callback) {
             // Add the logic to show a popup window with add-comments button
             const formContent =
                 '<form method="POST" enctype="multipart/form-data" action="/addComments">' +
-                '<input type="hidden" id="latlng" name="latlng">' +
+                '<input type="hidden" id="latlng" name="latlng" value=clickedMarkerPosition>' +
                 '<textarea id="commentTextBox" name="comment"></textarea><br>' +
                 '<input type="file" id="commentImage" name="file"><br>' +
                 '<button type = "submit" id="addCommentButton" class="btn btn-primary" value="Upload">Add Comment</button>' +

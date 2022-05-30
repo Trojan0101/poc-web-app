@@ -23,10 +23,11 @@ public class FileUploadController {
     }
 
     @PostMapping("/addComments")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam String comment) throws IOException {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam String latlng, @RequestParam String comment) throws IOException {
 
         System.out.println("file: " + file);
         System.out.println("comment: " + comment);
+        System.out.println("location: " + latlng);
 
         storageService.store(file);
 
