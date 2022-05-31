@@ -1,4 +1,4 @@
-package com.assesment.poc.storage;
+package com.assesment.poc.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

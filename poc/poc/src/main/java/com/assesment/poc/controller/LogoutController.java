@@ -42,12 +42,15 @@ public class LogoutController implements LogoutSuccessHandler {
             DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
             String email = jwt.getClaims().get("email").asString();
             Optional<LoginDetails> loginDetails = loginDetailsRepository.findById(email);
+
             if (loginDetails.isPresent()) {
                 LoginDetails userLoginDetails = loginDetails.get();
                 userLoginDetails.setLoggedIn(false);
                 loginDetailsRepository.save(userLoginDetails);
             }
+
             res.sendRedirect(logoutUrl);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

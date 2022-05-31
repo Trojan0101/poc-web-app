@@ -1,13 +1,10 @@
-package com.assesment.poc.storage;
+package com.assesment.poc.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("storage")
-public class StorageProperties {
+public class StorageConfig {
 
-	/**
-	 * Folder location for storing files
-	 */
 	private String location = "comment-pictures";
 
 	public String getLocation() {

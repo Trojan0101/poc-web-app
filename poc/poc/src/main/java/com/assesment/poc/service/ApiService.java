@@ -17,7 +17,6 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + controller.getManagementApiToken());
-
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
@@ -31,7 +30,6 @@ public class ApiService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + controller.getManagementApiToken());
-
         HttpEntity<String> request = new HttpEntity<String>(requestBody, headers);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> result = restTemplate.postForEntity(url, request, String.class);

@@ -1,7 +1,7 @@
 package com.assesment.poc.controller;
 
-import com.assesment.poc.storage.StorageFileNotFoundException;
-import com.assesment.poc.storage.StorageService;
+import com.assesment.poc.Exception.StorageFileNotFoundException;
+import com.assesment.poc.service.StorageService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 @Controller
 public class FileUploadController {
@@ -31,7 +29,7 @@ public class FileUploadController {
                                    @RequestParam String latitude,
                                    @RequestParam String longitude,
                                    @RequestParam String comment,
-                                   Authentication authentication) throws IOException {
+                                   Authentication authentication) {
 
         TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
         DecodedJWT jwt = JWT.decode(token.getCredentials().toString());

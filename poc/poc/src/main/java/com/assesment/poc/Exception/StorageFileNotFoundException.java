@@ -1,4 +1,4 @@
-package com.assesment.poc.storage;
+package com.assesment.poc.Exception;
 
 public class StorageFileNotFoundException extends StorageException {
 

@@ -34,7 +34,6 @@ public class HomeController {
         List<String> usersFirstName = (List<String>) userData.get(1);
         List<?> usersLocation = (List<?>) userData.get(2);
         List<String> activeUsersEmail = (List<String>) userController.getActiveUsers();
-
         List<String> activeUsersFirstName = new ArrayList<>();
 
         for (String email : activeUsersEmail) {
