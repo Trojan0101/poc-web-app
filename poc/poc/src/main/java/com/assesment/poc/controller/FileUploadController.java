@@ -2,8 +2,12 @@ package com.assesment.poc.controller;
 
 import com.assesment.poc.storage.StorageFileNotFoundException;
 import com.assesment.poc.storage.StorageService;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,13 +27,26 @@ public class FileUploadController {
     }
 
     @PostMapping("/addComments")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam String latlng, @RequestParam String comment) throws IOException {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file,
+                                   @RequestParam String lattitude,
+                                   @RequestParam String longitude,
+                                   @RequestParam String comment,
+                                   Authentication authentication) throws IOException {
 
-        System.out.println("file: " + file);
+        TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
+        DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
+        String email = jwt.getClaims().get("email").asString();
+
+        System.out.println("email: " + email);
+        System.out.println("file: " + file.getOriginalFilename());
         System.out.println("comment: " + comment);
-        System.out.println("location: " + latlng);
+        System.out.println("lattitude: " + lattitude);
+        System.out.println("longitude: " + longitude);
 
-        storageService.store(file);
+        if (!file.isEmpty()) {
+            storageService.store(file);
+        }
+
 
         return "redirect:/dashboard";
 

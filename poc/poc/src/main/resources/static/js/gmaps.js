@@ -25,13 +25,14 @@ function initMap(callback) {
         // open info window when marker is clicked
         marker.addListener("click", (mapsMouseEvent) => {
 
-            const clickedMarkerPosition =
-                JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
+            const clickedMarkerPositionLat = mapsMouseEvent.latLng.toJSON().lat;
+            const clickedMarkerPositionLng = mapsMouseEvent.latLng.toJSON().lng;
 
             // Add the logic to show a popup window with add-comments button
             const formContent =
-                '<form method="POST" enctype="multipart/form-data" action="/addComments">' +
-                '<input type="hidden" id="latlng" name="latlng" value=clickedMarkerPosition>' +
+                '<form name="commentsForm" method="POST" enctype="multipart/form-data" action="/addComments">' +
+                '<input type="hidden" id="lattitude" name="lattitude" value=' + clickedMarkerPositionLat + '>' +
+                '<input type="hidden" id="longitude" name="longitude" value=' + clickedMarkerPositionLng + '>' +
                 '<textarea id="commentTextBox" name="comment"></textarea><br>' +
                 '<input type="file" id="commentImage" name="file"><br>' +
                 '<button type = "submit" id="addCommentButton" class="btn btn-primary" value="Upload">Add Comment</button>' +
@@ -69,10 +70,6 @@ for (let i = 0; i < usersLocationArray.length; i++) {
         lng: Number(newArray[1])
     };
     locations.push(location);
-}
-
-function addComments() {
-    alert("Add sample comments!");
 }
 
 window.initMap = initMap;
