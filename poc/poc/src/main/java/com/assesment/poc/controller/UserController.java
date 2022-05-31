@@ -45,7 +45,8 @@ public class UserController {
 
     @GetMapping(value = "/users")
     @ResponseBody
-    public String users(HttpServletRequest request, HttpServletResponse response) {
+    public String users(HttpServletRequest request,
+                        HttpServletResponse response) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -61,14 +62,16 @@ public class UserController {
 
     @GetMapping(value = "/userByEmail")
     @ResponseBody
-    public ResponseEntity<String> userByEmail(HttpServletResponse response, @RequestParam String email) {
+    public ResponseEntity<String> userByEmail(HttpServletResponse response,
+                                              @RequestParam String email) {
 
         ResponseEntity<String> result = apiService.getCall(config.getUsersByEmailUrl() + email);
         return result;
 
     }
 
-    public List<?> getUsersData(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+    public List<?> getUsersData(HttpServletRequest request,
+                                HttpServletResponse response) throws JsonProcessingException {
 
         String userDetails = users(request, response);
         JSONArray userDetailsArray = new JSONArray(userDetails);

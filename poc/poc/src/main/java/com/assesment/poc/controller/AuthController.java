@@ -42,7 +42,8 @@ public class AuthController {
     private AuthenticationController authenticationController;
 
     @GetMapping(value = "/login")
-    protected void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void login(HttpServletRequest request,
+                         HttpServletResponse response) throws IOException {
 
         String redirectUri = config.getContextPath(request) + "/callback";
         String authorizeUrl = authenticationController.buildAuthorizeUrl(request, response, redirectUri)
@@ -53,7 +54,8 @@ public class AuthController {
     }
 
     @GetMapping(value = "/callback")
-    public void callback(HttpServletRequest request, HttpServletResponse response) throws IdentityVerificationException, IOException {
+    public void callback(HttpServletRequest request,
+                         HttpServletResponse response) throws IdentityVerificationException, IOException {
 
         Tokens tokens = authenticationController.handle(request, response);
 

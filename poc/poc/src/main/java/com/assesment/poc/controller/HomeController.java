@@ -25,7 +25,9 @@ public class HomeController {
     }
 
     @GetMapping("/dashboard")
-    public String getDashboard(HttpServletRequest request, HttpServletResponse response, Model model) throws JsonProcessingException {
+    public String getDashboard(HttpServletRequest request,
+                               HttpServletResponse response,
+                               Model model) throws JsonProcessingException {
 
         List<?> userData = userController.getUsersData(request, response);
         List<String> usersEmail = (List<String>) userData.get(0);

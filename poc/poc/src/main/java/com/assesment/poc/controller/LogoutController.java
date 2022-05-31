@@ -26,7 +26,9 @@ public class LogoutController implements LogoutSuccessHandler {
     private LoginDetailsRepository loginDetailsRepository;
 
     @Override
-    public void onLogoutSuccess(HttpServletRequest req, HttpServletResponse res, Authentication authentication) {
+    public void onLogoutSuccess(HttpServletRequest req,
+                                HttpServletResponse res,
+                                Authentication authentication) {
 
         if (req.getSession() != null) {
             req.getSession().invalidate();
