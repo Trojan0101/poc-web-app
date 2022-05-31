@@ -1,5 +1,7 @@
 package com.assesment.poc.storage;
 
+import com.assesment.poc.model.UserComments;
+import com.assesment.poc.repository.UserCommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -14,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -23,27 +26,46 @@ public class FileSystemStorageService implements com.assesment.poc.storage.Stora
 	private final Path rootLocation;
 
 	@Autowired
+	UserCommentsRepository userCommentsRepository;
+
+	@Autowired
 	public FileSystemStorageService(com.assesment.poc.storage.StorageProperties properties) {
 		this.rootLocation = Paths.get(properties.getLocation());
 	}
 
 	@Override
-	public void store(MultipartFile file) {
+	public void store(MultipartFile file, String email, String latitude, String longitude, String comment) {
+
 		try {
 			if (file.isEmpty()) {
 				throw new com.assesment.poc.storage.StorageException("Failed to store empty file.");
 			}
+
+			String newFileName = String.valueOf(email + "-" +
+													latitude + "-" +
+													longitude + "-" +
+													LocalDate.now().toString().replaceAll("-", "") +
+													Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().indexOf(".")));
+
 			Path destinationFile = this.rootLocation.resolve(
-					Paths.get(Objects.requireNonNull(file.getOriginalFilename())))
+					Paths.get(Objects.requireNonNull(newFileName)))
 					.normalize().toAbsolutePath();
+
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				// This is a security check
-				throw new com.assesment.poc.storage.StorageException(
-						"Cannot store file outside current directory.");
+				throw new com.assesment.poc.storage.StorageException("Cannot store file outside current directory.");
 			}
 			try (InputStream inputStream = file.getInputStream()) {
 				Files.copy(inputStream, destinationFile,
 					StandardCopyOption.REPLACE_EXISTING);
+
+				UserComments userComments = new UserComments();
+				userComments.setEmail(email);
+				userComments.setComment(comment);
+				userComments.setLatitude(latitude);
+				userComments.setLongitude(longitude);
+				userComments.setPicturename(newFileName);
+				userCommentsRepository.save(userComments);
 			}
 		}
 		catch (IOException e) {

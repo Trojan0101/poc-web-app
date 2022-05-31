@@ -31,7 +31,7 @@ function initMap(callback) {
             // Add the logic to show a popup window with add-comments button
             const formContent =
                 '<form name="commentsForm" method="POST" enctype="multipart/form-data" action="/addComments">' +
-                '<input type="hidden" id="lattitude" name="lattitude" value=' + clickedMarkerPositionLat + '>' +
+                '<input type="hidden" id="latitude" name="latitude" value=' + clickedMarkerPositionLat + '>' +
                 '<input type="hidden" id="longitude" name="longitude" value=' + clickedMarkerPositionLng + '>' +
                 '<textarea id="commentTextBox" name="comment"></textarea><br>' +
                 '<input type="file" id="commentImage" name="file"><br>' +

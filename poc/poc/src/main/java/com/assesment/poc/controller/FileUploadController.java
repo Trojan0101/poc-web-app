@@ -28,7 +28,7 @@ public class FileUploadController {
 
     @PostMapping("/addComments")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   @RequestParam String lattitude,
+                                   @RequestParam String latitude,
                                    @RequestParam String longitude,
                                    @RequestParam String comment,
                                    Authentication authentication) throws IOException {
@@ -37,16 +37,9 @@ public class FileUploadController {
         DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
         String email = jwt.getClaims().get("email").asString();
 
-        System.out.println("email: " + email);
-        System.out.println("file: " + file.getOriginalFilename());
-        System.out.println("comment: " + comment);
-        System.out.println("lattitude: " + lattitude);
-        System.out.println("longitude: " + longitude);
-
         if (!file.isEmpty()) {
-            storageService.store(file);
+            storageService.store(file, email, latitude, longitude, comment);
         }
-
 
         return "redirect:/dashboard";
 
