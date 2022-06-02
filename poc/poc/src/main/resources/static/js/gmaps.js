@@ -28,6 +28,12 @@ function initMap(callback) {
             const clickedMarkerPositionLat = mapsMouseEvent.latLng.toJSON().lat;
             const clickedMarkerPositionLng = mapsMouseEvent.latLng.toJSON().lng;
 
+            let commentsData = fetch("/showComments");
+            commentsData.then(response =>
+                response.json()).then(userComments => {
+                    console.log(userComments);
+            })
+
             // Add the logic to show a popup window with add-comments button
             const formContent =
                 '<form name="commentsForm" method="POST" enctype="multipart/form-data" action="/addComments">' +
@@ -71,5 +77,6 @@ for (let i = 0; i < usersLocationArray.length; i++) {
     };
     locations.push(location);
 }
+
 
 window.initMap = initMap;
