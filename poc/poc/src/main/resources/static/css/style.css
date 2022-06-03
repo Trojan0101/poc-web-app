@@ -10834,3 +10834,9 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   font-style: italic;
   font-weight: bold;
 }
+
+/* Read more */
+
+#more {
+  display: none;
+}

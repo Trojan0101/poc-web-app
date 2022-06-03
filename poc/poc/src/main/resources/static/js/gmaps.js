@@ -57,16 +57,29 @@ function initMap(callback) {
 
                         const firstNameTag = document.createElement('a');
                         const commentTag = document.createElement('p');
+
+                        const beforeSpanTag = document.createElement('span');
+                        const afterSpanTag = document.createElement('span');
+                        beforeSpanTag.setAttribute('id','dots');
+                        afterSpanTag.setAttribute('id','more');
+
+                        const readMore = document.createElement('button');
+                        readMore.setAttribute('onclick', 'readMoreButton()');
+                        readMore.setAttribute('id', 'readMoreButton');
+
                         firstNameTag.append(userFirstName);
                         li.append(firstNameTag);
                         li.append(pictureNode);
-                        commentTag.append(userComment);
+
+                        commentTag.append(userComment.toString().substring(0, 20));
+                        beforeSpanTag.append('...');
+                        afterSpanTag.append(userComment.toString().substring(20));
+                        commentTag.append(beforeSpanTag);
+                        commentTag.append(afterSpanTag);
+                        commentTag.append(readMore);
+
                         li.append(commentTag);
                         listNode.appendChild(li);
-
-                        // li.append(pictureNode);
-                        // li.appendChild(document.createTextNode(userEmail + ':<br> ' + userComment));
-                        // listNode.appendChild(li);
                     }
                 }
             })
@@ -116,6 +129,22 @@ for (let i = 0; i < usersLocationArray.length; i++) {
         lng: Number(newArray[1])
     };
     locations.push(location);
+}
+
+function readMoreButton() {
+    const dots = document.getElementById("dots");
+    const moreText = document.getElementById("more");
+    const btnText = document.getElementById("readMoreButton");
+
+    if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+    } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+    }
 }
 
 window.initMap = initMap;
