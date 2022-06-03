@@ -28,11 +28,27 @@ function initMap(callback) {
             const clickedMarkerPositionLat = mapsMouseEvent.latLng.toJSON().lat;
             const clickedMarkerPositionLng = mapsMouseEvent.latLng.toJSON().lng;
 
+            const commentsNode = document.createElement('div');
+            const listNode = document.createElement('ul');
+
             let commentsData = fetch("/showComments");
             commentsData.then(response =>
-                response.json()).then(userComments => {
-                    console.log(userComments);
+                response.json()).then(comments => {
+                    for (let i = 0; i < comments.length; i++) {
+                        if (comments[i]["latitude"] == clickedMarkerPositionLat &&
+                            comments[i]["longitude"] == clickedMarkerPositionLng) {
+                            console.log(comments[i]["comment"]);
+                            var userEmail = comments[i]["email"];
+                            var userComment = comments[i]["comment"];
+
+                            var li = document.createElement('li');
+                            li.appendChild(document.createTextNode(userEmail + ': ' + userComment));
+                            listNode.appendChild(li);
+                        }
+                    }
             })
+            commentsNode.appendChild(listNode);
+
 
             // Add the logic to show a popup window with add-comments button
             const formContent =
@@ -47,6 +63,7 @@ function initMap(callback) {
             const infoWindowNode = document.createElement('div');
             const formNode = document.createElement('div');
             formNode.innerHTML = formContent;
+            infoWindowNode.appendChild(commentsNode);
             infoWindowNode.appendChild(formNode);
 
             infoWindow.setContent(
