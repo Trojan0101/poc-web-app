@@ -37,10 +37,24 @@ function initMap(callback) {
                     for (let i = 0; i < comments.length; i++) {
                         if (comments[i]["latitude"] == clickedMarkerPositionLat &&
                             comments[i]["longitude"] == clickedMarkerPositionLng) {
-                            console.log(comments[i]["comment"]);
                             const userEmail = comments[i]["email"];
                             const userComment = comments[i]["comment"];
+                            const userPicture = comments[i]["picturename"];
                             const li = document.createElement('li');
+
+                            const img = document.createElement("img", innerWidth=5, innerHeight=5);
+                            const pictureNode = document.createElement('div');
+
+                            let pictureData = fetch("/getCommentPicture?filename=" + userPicture);
+                            pictureData.then(response =>
+                                response.blob())
+                                .then(picture => {
+                                    const pictureURL = URL.createObjectURL(picture);
+                                    img.src = pictureURL;
+                                    pictureNode.append(img);
+                                })
+
+                            li.append(pictureNode);
                             li.appendChild(document.createTextNode(userEmail + ': ' + userComment));
                             listNode.appendChild(li);
                         }

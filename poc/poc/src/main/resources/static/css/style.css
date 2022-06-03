@@ -10815,3 +10815,9 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 #addCommentButton {
   font-size: 12px;
 }
+
+/* User Comment Picture */
+
+.gm-style img {
+  width: 80px;
+}
