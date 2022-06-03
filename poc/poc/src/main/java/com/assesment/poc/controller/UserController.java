@@ -1,7 +1,9 @@
 package com.assesment.poc.controller;
 
+import com.assesment.poc.config.AuthConfig;
 import com.assesment.poc.model.LoginDetails;
 import com.assesment.poc.repository.LoginDetailsRepository;
+import com.assesment.poc.service.ApiService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,12 @@ public class UserController {
     private String domain;
 
     @Autowired
+    private ApiService apiService;
+
+    @Autowired
+    private AuthConfig config;
+
+    @Autowired
     private AuthController controller;
 
     @Autowired
@@ -38,6 +46,17 @@ public class UserController {
         ResponseEntity<String> result = restTemplate.exchange("https://" + domain + "/api/v2/users?fields=email,user_metadata", HttpMethod.GET, entity, String.class);
         return result.getBody();
 
+    }
+
+    public String getUserFirstName(String email) {
+
+        ResponseEntity<String> result = apiService.getCall(config.getUsersByEmailUrl()+email);
+        JSONArray userData = new JSONArray(result.getBody());
+        JSONObject userDataObj = userData.getJSONObject(0);
+        JSONObject userMetadata = (JSONObject) userDataObj.get("user_metadata");
+        String userFirstName = userMetadata.get("first_name").toString();
+
+        return userFirstName;
     }
 
     public List<?> getUsersData(HttpServletRequest request,

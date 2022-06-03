@@ -34,31 +34,41 @@ function initMap(callback) {
             let commentsData = fetch("/showComments");
             commentsData.then(response =>
                 response.json()).then(comments => {
-                    for (let i = 0; i < comments.length; i++) {
-                        if (comments[i]["latitude"] == clickedMarkerPositionLat &&
-                            comments[i]["longitude"] == clickedMarkerPositionLng) {
-                            const userEmail = comments[i]["email"];
-                            const userComment = comments[i]["comment"];
-                            const userPicture = comments[i]["picturename"];
-                            const li = document.createElement('li');
+                    console.log(comments);
+                for (let i = 0; i < comments.length; i++) {
+                    if (comments[i]["latitude"] == clickedMarkerPositionLat &&
+                        comments[i]["longitude"] == clickedMarkerPositionLng) {
+                        const userFirstName = comments[i]["firstName"];
+                        const userComment = comments[i]["comment"];
+                        const userPicture = comments[i]["picturename"];
+                        const li = document.createElement('li');
 
-                            const img = document.createElement("img", innerWidth=5, innerHeight=5);
-                            const pictureNode = document.createElement('div');
+                        const img = document.createElement("img", innerWidth = 5, innerHeight = 5);
+                        const pictureNode = document.createElement('div');
 
-                            let pictureData = fetch("/getCommentPicture?filename=" + userPicture);
-                            pictureData.then(response =>
-                                response.blob())
-                                .then(picture => {
-                                    const pictureURL = URL.createObjectURL(picture);
-                                    img.src = pictureURL;
-                                    pictureNode.append(img);
-                                })
+                        let pictureData = fetch("/getCommentPicture?filename=" + userPicture);
+                        pictureData.then(response =>
+                            response.blob())
+                            .then(picture => {
+                                const pictureURL = URL.createObjectURL(picture);
+                                img.src = pictureURL;
+                                pictureNode.append(img);
+                            })
 
-                            li.append(pictureNode);
-                            li.appendChild(document.createTextNode(userEmail + ': ' + userComment));
-                            listNode.appendChild(li);
-                        }
+                        const firstNameTag = document.createElement('a');
+                        const commentTag = document.createElement('p');
+                        firstNameTag.append(userFirstName);
+                        li.append(firstNameTag);
+                        li.append(pictureNode);
+                        commentTag.append(userComment);
+                        li.append(commentTag);
+                        listNode.appendChild(li);
+
+                        // li.append(pictureNode);
+                        // li.appendChild(document.createTextNode(userEmail + ':<br> ' + userComment));
+                        // listNode.appendChild(li);
                     }
+                }
             })
             commentsNode.appendChild(listNode);
 
@@ -107,6 +117,5 @@ for (let i = 0; i < usersLocationArray.length; i++) {
     };
     locations.push(location);
 }
-
 
 window.initMap = initMap;

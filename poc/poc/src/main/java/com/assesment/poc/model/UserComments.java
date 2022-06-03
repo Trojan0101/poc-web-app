@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user_comments")
@@ -22,9 +23,13 @@ public class UserComments {
     @NotBlank
     private String email;
     @NotBlank
+    @Column(name = "first_name")
+    private String firstName;
+    @NotBlank
     private String latitude;
     @NotBlank
     private String longitude;
+    @Size(max = 2147483640)
     private String comment;
     @Column(name = "picture_name")
     private String picturename;

@@ -10816,8 +10816,21 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   font-size: 12px;
 }
 
-/* User Comment Picture */
+#showCommentsButton {
+  font-size: 12px;
+}
+
+/* User Comment */
 
 .gm-style img {
   width: 80px;
+}
+
+.gm-style ul {
+  margin-left: -30px;
+}
+
+.gm-style a {
+  font-style: italic;
+  font-weight: bold;
 }

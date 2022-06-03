@@ -37,7 +37,7 @@ public class StorageServiceImpl implements StorageService {
 	}
 
 	@Override
-	public void store(MultipartFile file, String email, String latitude, String longitude, String comment) {
+	public void store(MultipartFile file, String email, String firstName, String latitude, String longitude, String comment) {
 
 		try {
 
@@ -62,6 +62,7 @@ public class StorageServiceImpl implements StorageService {
 				Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
 				UserComments userComments = new UserComments();
 				userComments.setEmail(email);
+				userComments.setFirstName(firstName);
 				userComments.setComment(comment);
 				userComments.setLatitude(latitude);
 				userComments.setLongitude(longitude);

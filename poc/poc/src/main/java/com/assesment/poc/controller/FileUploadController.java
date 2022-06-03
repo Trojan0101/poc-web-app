@@ -20,6 +20,9 @@ public class FileUploadController {
     private final StorageService storageService;
 
     @Autowired
+    private UserController userController;
+
+    @Autowired
     public FileUploadController(StorageService storageService) {
         this.storageService = storageService;
     }
@@ -34,9 +37,10 @@ public class FileUploadController {
         TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
         DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
         String email = jwt.getClaims().get("email").asString();
+        String userFirstName = userController.getUserFirstName(email);
 
         if (!file.isEmpty()) {
-            storageService.store(file, email, latitude, longitude, comment);
+            storageService.store(file, email, userFirstName, latitude, longitude, comment);
         }
 
         return "redirect:/dashboard";
