@@ -34,7 +34,6 @@ function initMap(callback) {
             let commentsData = fetch("/showComments");
             commentsData.then(response =>
                 response.json()).then(comments => {
-                    console.log(comments);
                 for (let i = 0; i < comments.length; i++) {
                     if (comments[i]["latitude"] == clickedMarkerPositionLat &&
                         comments[i]["longitude"] == clickedMarkerPositionLng) {
@@ -64,12 +63,17 @@ function initMap(callback) {
                         afterSpanTag.setAttribute('id','more');
 
                         const readMore = document.createElement('button');
-                        readMore.setAttribute('onclick', 'readMoreButton()');
+                        readMore.setAttribute('onclick', 'readMoreButton(this)');
                         readMore.setAttribute('id', 'readMoreButton');
+                        readMore.innerHTML = "Read more";
 
                         firstNameTag.append(userFirstName);
                         li.append(firstNameTag);
+                        const lineBreak1 = document.createElement('p');
+                        li.append(lineBreak1);
                         li.append(pictureNode);
+                        const lineBreak2 = document.createElement('p');
+                        li.append(lineBreak2);
 
                         commentTag.append(userComment.toString().substring(0, 20));
                         beforeSpanTag.append('...');
@@ -77,8 +81,10 @@ function initMap(callback) {
                         commentTag.append(beforeSpanTag);
                         commentTag.append(afterSpanTag);
                         commentTag.append(readMore);
-
+                        const separatorLine = document.createElement('hr');
+                        separatorLine.setAttribute('class', 'solid');
                         li.append(commentTag);
+                        li.append(separatorLine);
                         listNode.appendChild(li);
                     }
                 }
@@ -131,10 +137,11 @@ for (let i = 0; i < usersLocationArray.length; i++) {
     locations.push(location);
 }
 
-function readMoreButton() {
-    const dots = document.getElementById("dots");
-    const moreText = document.getElementById("more");
-    const btnText = document.getElementById("readMoreButton");
+function readMoreButton(btn) {
+    let parent = btn.parentElement;
+    const dots = parent.firstElementChild;
+    const moreText = parent.firstElementChild.nextElementSibling;
+    const btnText = parent.firstElementChild.nextElementSibling.nextElementSibling;
 
     if (dots.style.display === "none") {
         dots.style.display = "inline";
