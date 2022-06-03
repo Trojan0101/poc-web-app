@@ -38,10 +38,9 @@ function initMap(callback) {
                         if (comments[i]["latitude"] == clickedMarkerPositionLat &&
                             comments[i]["longitude"] == clickedMarkerPositionLng) {
                             console.log(comments[i]["comment"]);
-                            var userEmail = comments[i]["email"];
-                            var userComment = comments[i]["comment"];
-
-                            var li = document.createElement('li');
+                            const userEmail = comments[i]["email"];
+                            const userComment = comments[i]["comment"];
+                            const li = document.createElement('li');
                             li.appendChild(document.createTextNode(userEmail + ': ' + userComment));
                             listNode.appendChild(li);
                         }
