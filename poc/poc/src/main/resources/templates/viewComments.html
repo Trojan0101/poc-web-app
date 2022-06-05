@@ -52,7 +52,18 @@
         <!-- Page content-->
         <div class="container-fluid">
             <!--The div element for the map -->
-            <p>Hello</p>
+            <div>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                    </tr>
+                    <tr th:each="userComment: ${userComments}">
+                        <td th:text="${userComment.firstName}" />
+                        <td th:text="${userComment.comment}" />
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>

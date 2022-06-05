@@ -1,5 +1,7 @@
 package com.assesment.poc.controller;
 
+import com.assesment.poc.model.UserComments;
+import com.assesment.poc.repository.UserCommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,9 @@ public class HomeController {
 
     @Autowired
     UserController userController;
+
+    @Autowired
+    UserCommentsRepository userCommentsRepository;
 
     @GetMapping("/")
     public String home() {
@@ -40,6 +45,9 @@ public class HomeController {
                                   Model model) {
 
         pageData(request, response, model);
+
+        List<UserComments> userComments = userCommentsRepository.findAll();
+        model.addAttribute("userComments", userComments);
 
         return "viewComments";
 
