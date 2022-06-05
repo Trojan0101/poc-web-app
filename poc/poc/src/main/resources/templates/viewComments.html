@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Dashboard</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="/css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 <div class="d-flex" id="wrapper">
-  <!-- Sidebar-->
-  <div class="border-end bg-white" id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom bg-light">Poc</div>
-    <div class="list-group list-group-flush">
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/dashboard">Dashboard</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/viewComments">View Comments</a>
-      <div>
-        <input type="text" id="myInput" onkeyup="searchUserNames()" placeholder="Search">
-        <button id="sortButton" class="btn btn-primary" onclick="sortUserNames()">Sort</button>
-        <ul id="myUL">
-          <li id="myActive" th:each="activeUserFirstName : ${activeUsersFirstName}">
-            <a href="#" th:text="${activeUserFirstName}"></a>
-          </li>
-          <li id="myInactive" th:each="inactiveUserFirstName : ${inactiveUsersFirstName}">
-            <a href="#" th:text="${inactiveUserFirstName}"></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- Page content wrapper-->
-  <div id="page-content-wrapper">
-    <!-- Top navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <div class="container-fluid">
-        <button class="btn btn-primary" id="sidebarToggle">Toggle</button>
-        <div>
-          <a id="qsLogoutBtn" th:href="@{/logout}" class="dropdown-item">
-            <i class="btn btn-primary">Log out</i>
-          </a>
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light">Poc</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/dashboard">Dashboard</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/viewComments">View Comments</a>
+            <div>
+                <input type="text" id="myInput" onkeyup="searchUserNames()" placeholder="Search">
+                <button id="sortButton" class="btn btn-primary" onclick="sortUserNames()">Sort</button>
+                <ul id="myUL">
+                    <li id="myActive" th:each="activeUserFirstName : ${activeUsersFirstName}">
+                        <a href="#" th:text="${activeUserFirstName}"></a>
+                    </li>
+                    <li id="myInactive" th:each="inactiveUserFirstName : ${inactiveUsersFirstName}">
+                        <a href="#" th:text="${inactiveUserFirstName}"></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </nav>
-    <script>
-      const message = "[[${usersLocation}]]";
-    </script>
-    <!-- Page content-->
-    <div class="container-fluid">
-      <!--The div element for the map -->
-      <p>Hello</p>
-  </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle">Toggle</button>
+                <div>
+                    <a id="qsLogoutBtn" th:href="@{/logout}" class="dropdown-item">
+                        <i class="btn btn-primary">Log out</i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <script>
+            const message = "[[${usersLocation}]]";
+        </script>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <!--The div element for the map -->
+            <p>Hello</p>
+        </div>
+    </div>
 </div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
-<script src="/js/gmaps.js"></script>
-<!-- Google Maps API-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPgaDq91-UvYlqJ26avq8nbsjLE6csozk&callback=initMap&v=weekly" defer></script>
-<script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
 </body>
 </html>
