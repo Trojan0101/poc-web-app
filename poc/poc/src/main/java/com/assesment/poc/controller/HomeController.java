@@ -1,6 +1,5 @@
 package com.assesment.poc.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +26,28 @@ public class HomeController {
     @GetMapping("/dashboard")
     public String getDashboard(HttpServletRequest request,
                                HttpServletResponse response,
-                               Model model) throws JsonProcessingException {
+                               Model model) {
+
+        pageData(request, response, model);
+
+        return "dashboard";
+
+    }
+
+    @GetMapping("/viewComments")
+    public String getViewComments(HttpServletRequest request,
+                                  HttpServletResponse response,
+                                  Model model) {
+
+        pageData(request, response, model);
+
+        return "viewComments";
+
+    }
+
+    private void pageData (HttpServletRequest request,
+                           HttpServletResponse response,
+                           Model model) {
 
         List<?> userData = userController.getUsersData(request, response);
         List<String> usersEmail = (List<String>) userData.get(0);
@@ -45,7 +65,6 @@ public class HomeController {
         model.addAttribute("activeUsersFirstName", activeUsersFirstName);
         model.addAttribute("inactiveUsersFirstName", usersFirstName);
         model.addAttribute("usersLocation", usersLocation);
-        return "dashboard";
 
     }
 
