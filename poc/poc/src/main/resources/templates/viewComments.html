@@ -60,7 +60,7 @@
                     </tr>
                     <tr th:each="userComment: ${userComments}">
                         <td th:text="${userComment.firstName}" />
-                        <td th:text="${userComment.comment}" />
+                        <td onclick="focusLocation(this)" th:text="${userComment.comment}" />
                     </tr>
                 </table>
             </div>
@@ -71,5 +71,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
+<script src="/js/gmaps.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,6 +24,12 @@ public class CommentsController {
         JSONArray jsonArray = new JSONArray(userComments);
         return ResponseEntity.ok().body(jsonArray.toString());
 
+    }
+
+    @GetMapping("/getLatLng")
+    public ResponseEntity<?> getLatLng(@RequestParam String comment) {
+        UserComments userComments = userCommentsRepository.findByComment(comment);
+        return ResponseEntity.ok().body(userComments);
     }
 
 

@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserCommentsRepository extends JpaRepository<UserComments, Long> {
 
+    UserComments findByComment(String comment);
+
 }

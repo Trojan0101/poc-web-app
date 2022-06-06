@@ -1,10 +1,17 @@
 //Marker Cluster
-function initMap(callback) {
+function initMap(callback, latLng) {
+    console.log(latLng);
+    let latitude;
+    let longitude;
+    if (latLng === undefined) {
+        latitude = -28.024;
+        longitude = 140.887
+    }
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 3,
         center: {
-            lat: -28.024,
-            lng: 140.887
+            lat: latitude,
+            lng: longitude
         },
     });
     const infoWindow = new google.maps.InfoWindow({
@@ -152,6 +159,16 @@ function readMoreButton(btn) {
         btnText.innerHTML = "Read less";
         moreText.style.display = "inline";
     }
+}
+
+function focusLocation(comment) {
+    let latLng;
+    let commentData = fetch("/getLatLng?comment=" + comment.innerHTML.toString());
+    commentData.then(response =>
+        response.json()).then(comments => {
+            latLng = comments["latitude"] + ',' + comments["longitude"];
+        });
+    location.replace("/dashboard");
 }
 
 window.initMap = initMap;
