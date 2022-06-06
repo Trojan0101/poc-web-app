@@ -21,7 +21,8 @@
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/viewComments">View Comments</a>
             <div>
                 <input type="text" id="myInput" onkeyup="searchUserNames()" placeholder="Search">
-                <button id="sortButton" class="btn btn-primary" onclick="sortUserNames()">Sort</button>
+                <button id="sortButton" class="btn btn-primary" onclick="sortUserNamesAsc()">Asc<br>&nbsp&nbspDesc&nbsp&nbsp</button>
+                <button id="sortActiveStatusButton" class="btn btn-primary" onclick="sortActiveInactive()">Active<br>Inactive</button>
                 <ul id="myUL">
                     <li id="myActive" th:each="activeUserFirstName : ${activeUsersFirstName}">
                         <a href="#" th:text="${activeUserFirstName}"></a>

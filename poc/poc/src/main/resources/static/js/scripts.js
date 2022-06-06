@@ -33,7 +33,7 @@ function searchUserNames() {
 }
 
 //Sort User Names
-function sortUserNames() {
+function sortUserNamesAsc() {
   var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
   list = document.getElementById("myUL");
   switching = true;
@@ -66,4 +66,10 @@ function sortUserNames() {
       }
     }
   }
+}
+
+function sortActiveInactive() {
+
+  console.log("username");
+
 }

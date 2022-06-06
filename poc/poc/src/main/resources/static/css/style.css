@@ -10792,9 +10792,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 }
 
 /* Sort Button */
-#sortButton {
+#sortButton, #sortActiveStatusButton {
   margin-bottom: 12px;
   margin-left: 12px;
+  font-size: 10px;
+  display: inline-block;
 }
 
 /* Comment Text Box */
