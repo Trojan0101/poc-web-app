@@ -1,19 +1,23 @@
 //Marker Cluster
-function initMap(callback, latLng) {
-    console.log(latLng);
-    let latitude;
-    let longitude;
-    if (latLng === undefined) {
+function initMap(callback) {
+    let latitude = parseFloat(sessionStorage.getItem("latitude"));
+    let longitude = parseFloat(sessionStorage.getItem("longitude"));
+    let mapZoom = parseInt(sessionStorage.getItem("mapZoom"));
+
+    if (latitude == undefined || isNaN(latitude) || longitude == undefined || isNaN(longitude)) {
         latitude = -28.024;
-        longitude = 140.887
+        longitude = 140.887;
+        mapZoom = 3;
     }
+
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 3,
+        zoom: mapZoom,
         center: {
             lat: latitude,
             lng: longitude
         },
     });
+    sessionStorage.clear();
     const infoWindow = new google.maps.InfoWindow({
         content: "",
         disableAutoPan: true,
@@ -162,12 +166,13 @@ function readMoreButton(btn) {
 }
 
 function focusLocation(comment) {
-    let latLng;
     let commentData = fetch("/getLatLng?comment=" + comment.innerHTML.toString());
     commentData.then(response =>
         response.json()).then(comments => {
-            latLng = comments["latitude"] + ',' + comments["longitude"];
-        });
+        sessionStorage.setItem("latitude", comments["latitude"]);
+        sessionStorage.setItem("longitude", comments["longitude"]);
+        sessionStorage.setItem("mapZoom", "25");
+    });
     location.replace("/dashboard");
 }
 
