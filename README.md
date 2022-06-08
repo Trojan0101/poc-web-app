@@ -55,6 +55,20 @@ A Java Spring-Boot based web application that incorporates authentication and au
 - Copy the API key and replace it in the **dashboard.html** file.
 - Enable the **Maps Javascript API**.
 
+### End-Points Usage Overview:
+
+| Controller | End-Point | Triggered |
+|:-----------|:---------:|----------:|
+| AuthController | /login | When the login button in index pages is clicked. |
+| AuthController | /callback | When the user successfully logs in, the endpoint redirects the user to dashboard page. |
+| CommentsController | /showComments | When a location marker is clicked, shows the comments made to that marker. |
+| CommentsController | /getLatLng | When a comment in ViewComments page is clicked, the latitude and longitude to which the comment is made is fetched. |
+| FileUploadController | /addComments | When a comment is added by the user using the ‘Add Comment’ button. |
+| FileUploadController | /getCommentsPicture | When a user clicks a marker, fetches the picture added to the comments made to that location. |
+| HomeController | /dashboard | Shows the dashboard page. |
+| HomeController | /viewComments | Shows the user comments page. |
+| LogoutController | - | When the user logs out from the app. |
+
 ### NOTE:
 
 application.yml file for the spring boot application is not included in the repo. Create or modify your application.yml file in **resources** folder by following the below template.
