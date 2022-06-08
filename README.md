@@ -18,14 +18,14 @@ A Java Spring-Boot based web application that incorporates authentication and au
 - Regular Web Application:
 
     - Create a new application with type **Regular Web Application**.
-    - Copy the **domain, client id, and client secret**. Replace the values in the **application.properties** file and wherever necessary.
+    - Copy the **domain, client id, and client secret**. Replace the values in the **application.yml** file and wherever necessary.
     - Add Allowed Callback URLs: http<span></span>://localhost:8080/callback
     - Add Allowed Logout URLs: http<span></span>://localhost:8080
 
 - Machine to Machine Application:
 
     - Create a new application with type **Machine to Machine Application**.
-    - Copy the **domain, client id, and client secret**. Replace the values in the **application.properties** file and wherever necessary.
+    - Copy the **domain, client id, and client secret**. Replace the values in the **application.yml** file and wherever necessary.
 
 - Username-Password-Authentication Database:
 
@@ -47,7 +47,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 ### Database:
 
 - Start postgresql in local or in cloud, and create a database.
-- Modify the properties for database in the **application.properties** file.
+- Modify the properties for database in the **application.yml** file.
 
 ### Google Maps:
 
