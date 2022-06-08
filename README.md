@@ -58,7 +58,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 ### End-Points Usage Overview:
 
 | Controller | End-Point | Triggered |
-|:-----------|:---------:|----------:|
+|:-----------|:----------|:----------|
 | AuthController | /login | When the login button in index pages is clicked. |
 | AuthController | /callback | When the user successfully logs in, the endpoint redirects the user to dashboard page. |
 | CommentsController | /showComments | When a location marker is clicked, shows the comments made to that marker. |
