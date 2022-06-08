@@ -54,3 +54,41 @@ A Java Spring-Boot based web application that incorporates authentication and au
 - Create an **API Credential** in Google Cloud Platform.
 - Copy the API key and replace it in the **dashboard.html** file.
 - Enable the **Maps Javascript API**.
+
+### NOTE:
+
+## application.yml file for the spring boot application is not included in the repo. Create or modify your application.yml file in **resources** folder by following the below template.
+
+```
+spring:
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+    datasource:
+        password: <YOUR POSTGRESQL PASSWORD>
+        driver-class-name: org.postgresql.Driver
+        username: <YOUR POSTGRESQL USERNAME>
+        url: <YOUR POSTGRESQL CONNECTION STRING>
+com:
+    auth0:
+        managementApi:
+            clientSecret: <YOUR AUTH0 MACHINE TO MACHINE APPLICATION CLIENT SECRET>
+            grantType: client_credentials
+            clientId: <YOUR AUTH0 MACHINE TO MACHINE APPLICATION CLIENTID>
+        domain: <YOUR AUTH0 DOMAIN>
+        clientSecret: <YOUR AUTH0 REGULAR WEB APPLICATION CLIENT SECRET>
+        clientId: <YOUR AUTH0 REGULAR WEB APPLICATION CLIENTID>
+
+---
+spring:
+    servlet:
+        multipart:
+            max-file-size: 101MB
+            max-request-size: 101MB
+
+server:
+    port: '8080'
+```
