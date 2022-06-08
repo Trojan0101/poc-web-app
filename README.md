@@ -57,7 +57,7 @@ A Java Spring-Boot based web application that incorporates authentication and au
 
 ### NOTE:
 
-## application.yml file for the spring boot application is not included in the repo. Create or modify your application.yml file in **resources** folder by following the below template.
+application.yml file for the spring boot application is not included in the repo. Create or modify your application.yml file in **resources** folder by following the below template.
 
 ```
 spring:
