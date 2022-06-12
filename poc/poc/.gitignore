@@ -36,4 +36,4 @@ build/
 /comment-pictures
 
 ## Application Properties File ###
-## /src/main/resources/application.yml
+/src/main/resources/application.yml
