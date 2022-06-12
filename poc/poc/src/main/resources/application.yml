@@ -1,0 +1,31 @@
+spring:
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+    datasource:
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        url: jdbc:postgresql://postgres-poc.ciqrrpkunyth.us-east-1.rds.amazonaws.com/authtest
+com:
+    auth0:
+        managementApi:
+            clientSecret: 0nUEnnvtaXThoPPWXMpUDGMlAiCphRnB0oB0qJjhl_GiPMasPp_gQRksFD9Ib_Zc
+            grantType: client_credentials
+            clientId: bBUmntMDqUENPUyzdsHANG0ggwxJCKKI
+        domain: dev-a0pcsh6v.us.auth0.com
+        clientSecret: WqZ8EqDUsjn4tsy-cGN8dLiD77iH789Jl1rUgGfGPestU2tdTq77Cl5NKuad7sQn
+        clientId: iHpBu1ewVA0Il8MraAwkwGzwS2IY7pvT
+
+---
+spring:
+    servlet:
+        multipart:
+            max-file-size: 101MB
+            max-request-size: 101MB
+
+server:
+    port: '8080'
