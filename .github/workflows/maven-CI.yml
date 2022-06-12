@@ -30,5 +30,7 @@ jobs:
       with:
         image: trojan0101/poc-web-app
         registry: docker.io
+        dockerfile: ../poc-web-app/poc/Dockerfile
+        directory: ../poc-web-app/poc
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
