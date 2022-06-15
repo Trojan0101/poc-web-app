@@ -79,16 +79,22 @@ public class HomeController {
                            Model model) {
 
         List<?> userData = userController.getUsersData(request, response);
+
         List<String> usersEmail = (List<String>) userData.get(0);
         List<String> usersFirstName = (List<String>) userData.get(1);
         List<?> usersLocation = (List<?>) userData.get(2);
         List<String> activeUsersEmail = (List<String>) userController.getActiveUsers();
         List<String> activeUsersFirstName = new ArrayList<>();
 
+        List<String> removeNames = new ArrayList<>();
+
         for (String email : activeUsersEmail) {
             int activeUserEmailIdx = usersEmail.indexOf(email);
             activeUsersFirstName.add(usersFirstName.get(activeUserEmailIdx));
-            usersFirstName.remove(activeUserEmailIdx);
+            removeNames.add(usersFirstName.get(activeUserEmailIdx));
+        }
+        for(String name: removeNames) {
+            usersFirstName.remove(name);
         }
 
         model.addAttribute("activeUsersFirstName", activeUsersFirstName);
