@@ -1,8 +1,14 @@
 package com.assesment.poc.controller;
 
 import com.assesment.poc.model.UserComments;
+import com.assesment.poc.model.Users;
 import com.assesment.poc.repository.UserCommentsRepository;
+import com.assesment.poc.repository.UsersRepository;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +27,9 @@ public class HomeController {
     @Autowired
     UserCommentsRepository userCommentsRepository;
 
+    @Autowired
+    UsersRepository usersRepository;
+
     @GetMapping("/")
     public String home() {
 
@@ -31,9 +40,21 @@ public class HomeController {
     @GetMapping("/dashboard")
     public String getDashboard(HttpServletRequest request,
                                HttpServletResponse response,
-                               Model model) {
+                               Model model,
+                               Authentication authentication) {
 
-        pageData(request, response, model);
+        TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
+        DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
+        String email = jwt.getClaims().get("email").asString();
+        String userFirstName = userController.getUserFirstName(email);
+
+        Users user = usersRepository.findByEmail(email);
+
+        if (!user.isEmailVerified()) {
+            return "verifyEmail";
+        } else {
+            pageData(request, response, model);
+        }
 
         return "dashboard";
 
