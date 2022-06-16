@@ -67,17 +67,3 @@ function sortUserNamesAsc() {
     }
   }
 }
-
-// const activeList = activeUsers.split(",");
-// const inactiveList = inactiveUsers.split(",");
-// const fullList = activeList.concat(inactiveList);
-// console.log(fullList)
-//
-// function sortActiveInactive() {
-//   let list = document.getElementById("myUL");
-//   let b = list.getElementsByTagName("li");
-//
-//   for (let i = 0; i < (b.length); i++) {
-//     b[i].innerHTML = fullList[i];
-//   }
-// }
