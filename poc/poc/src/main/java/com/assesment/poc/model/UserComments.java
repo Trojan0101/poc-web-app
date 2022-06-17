@@ -19,6 +19,7 @@ public class UserComments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comment_id")
     private long commentId;
     @NotBlank
     private String email;
