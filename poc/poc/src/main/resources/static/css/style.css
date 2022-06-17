@@ -3622,8 +3622,9 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  margin-top: -5px;
+  /*padding-top: 0.5rem;*/
+  padding-bottom: 0.3rem;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -10701,7 +10702,7 @@ textarea.form-control-lg {
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.54rem 1.25rem;
+  /*padding: 0.54rem 1.25rem;*/
   font-size: 2rem;
   font-weight: bold;
 }
@@ -10907,4 +10908,12 @@ th {
   background-color: #66ffb3;
   border-radius: 15px;
   font-weight: normal;
+}
+
+/* Scroll bar for user list*/
+
+.ScrollStyle
+{
+  max-height: 250px;
+  overflow-y: scroll;
 }
