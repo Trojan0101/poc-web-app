@@ -25,11 +25,13 @@
                 <button id="sortActiveStatusButton" class="btn btn-primary" onclick="sortActiveInactive()">Active<br>Inactive</button>
                 <div class="ScrollStyle">
                     <ul id="myUL">
-                        <li id="myActive" th:each="activeUserFirstName : ${activeUsersFirstName}">
-                            <a href="#" th:text="${activeUserFirstName}"></a>
-                        </li>
-                        <li id="myInactive" th:each="inactiveUserFirstName : ${inactiveUsersFirstName}">
-                            <a href="#" th:text="${inactiveUserFirstName}"></a>
+                        <li th:each="perUser : ${userList}">
+                            <span id="myActive" th:if="${perUser[1] == 'active'}">
+                                <a style="background-color:#99ff99" href="#" th:text="${perUser[0]}"></a>
+                            </span>
+                            <span id="myInactive" th:unless="${perUser[1] == 'active'}">
+                                <a style="background-color:#ffff99" href="#" th:text="${perUser[0]}"></a>
+                            </span>
                         </li>
                     </ul>
                 </div>

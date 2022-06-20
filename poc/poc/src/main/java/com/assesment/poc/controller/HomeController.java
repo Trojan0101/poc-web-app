@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -83,21 +84,25 @@ public class HomeController {
         List<?> usersFirstName = (List<?>) userData.get(1);
         List<?> usersLocation = (List<?>) userData.get(2);
         List<?> activeUsersEmail = userController.getActiveUsers();
-        List<String> activeUsersFirstName = new ArrayList<>();
+        List<List<?>> finalUserList = new ArrayList<>();
 
         List<String> removeNames = new ArrayList<>();
+        
 
         for (Object email : activeUsersEmail) {
+        	
             int activeUserEmailIdx = usersEmail.indexOf(email);
-            activeUsersFirstName.add((String) usersFirstName.get(activeUserEmailIdx));
+            finalUserList.add(Arrays.asList((String) usersFirstName.get(activeUserEmailIdx), "active"));
             removeNames.add((String) usersFirstName.get(activeUserEmailIdx));
         }
         for(String name: removeNames) {
             usersFirstName.remove(name);
         }
+        for (Object name: usersFirstName) {
+            finalUserList.add(Arrays.asList((String) name, "inactive"));
+        }
 
-        model.addAttribute("activeUsersFirstName", activeUsersFirstName);
-        model.addAttribute("inactiveUsersFirstName", usersFirstName);
+        model.addAttribute("userList", finalUserList);
         model.addAttribute("usersLocation", usersLocation);
 
     }
