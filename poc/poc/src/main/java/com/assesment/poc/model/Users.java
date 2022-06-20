@@ -1,10 +1,5 @@
 package com.assesment.poc.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,10 +8,6 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Users {
 
     @Id
@@ -26,4 +17,36 @@ public class Users {
     @Column(name = "email_verified")
     private boolean emailVerified;
 
+    public Users() {
+    }
+
+    public Users(String email, String password, boolean emailVerified) {
+        this.email = email;
+        this.password = password;
+        this.emailVerified = emailVerified;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
 }

@@ -1,10 +1,5 @@
 package com.assesment.poc.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,10 +8,6 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "login_details")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class LoginDetails {
 
     @Id
@@ -25,4 +16,27 @@ public class LoginDetails {
     @Column(name = "is_logged_in")
     private boolean isLoggedIn;
 
+    public LoginDetails() {
+    }
+
+    public LoginDetails(String email, boolean isLoggedIn) {
+        this.email = email;
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
 }
