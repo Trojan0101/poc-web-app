@@ -77,7 +77,7 @@ public class AuthController {
         requestBody.put("grant_type", "client_credentials");
         HttpEntity<String> request = new HttpEntity<String>(requestBody.toString(), headers);
         RestTemplate restTemplate = new RestTemplate();
-        HashMap result = restTemplate.postForObject("https://" + domain + "/oauth/token", request, HashMap.class);
+        HashMap<?, ?> result = restTemplate.postForObject("https://" + domain + "/oauth/token", request, HashMap.class);
 
         return (String) result.get("access_token");
 

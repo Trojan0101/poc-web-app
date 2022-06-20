@@ -46,7 +46,6 @@ public class HomeController {
         TestingAuthenticationToken token = (TestingAuthenticationToken) authentication;
         DecodedJWT jwt = JWT.decode(token.getCredentials().toString());
         String email = jwt.getClaims().get("email").asString();
-        String userFirstName = userController.getUserFirstName(email);
 
         Users user = usersRepository.findByEmail(email);
 
@@ -80,18 +79,18 @@ public class HomeController {
 
         List<?> userData = userController.getUsersData(request, response);
 
-        List<String> usersEmail = (List<String>) userData.get(0);
-        List<String> usersFirstName = (List<String>) userData.get(1);
+        List<?> usersEmail = (List<?>) userData.get(0);
+        List<?> usersFirstName = (List<?>) userData.get(1);
         List<?> usersLocation = (List<?>) userData.get(2);
-        List<String> activeUsersEmail = (List<String>) userController.getActiveUsers();
+        List<?> activeUsersEmail = userController.getActiveUsers();
         List<String> activeUsersFirstName = new ArrayList<>();
 
         List<String> removeNames = new ArrayList<>();
 
-        for (String email : activeUsersEmail) {
+        for (Object email : activeUsersEmail) {
             int activeUserEmailIdx = usersEmail.indexOf(email);
-            activeUsersFirstName.add(usersFirstName.get(activeUserEmailIdx));
-            removeNames.add(usersFirstName.get(activeUserEmailIdx));
+            activeUsersFirstName.add((String) usersFirstName.get(activeUserEmailIdx));
+            removeNames.add((String) usersFirstName.get(activeUserEmailIdx));
         }
         for(String name: removeNames) {
             usersFirstName.remove(name);
