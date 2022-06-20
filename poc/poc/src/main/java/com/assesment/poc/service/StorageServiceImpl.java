@@ -29,7 +29,6 @@ public class StorageServiceImpl implements StorageService {
 	@Autowired
 	UserCommentsRepository userCommentsRepository;
 
-	@Autowired
 	public StorageServiceImpl(StorageConfig properties) {
 
 		this.rootLocation = Paths.get(properties.getLocation());
